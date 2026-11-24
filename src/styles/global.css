@@ -118,6 +118,10 @@ h3 { font-size: 1.3rem; }
 .feature-copy p { color: #d1dce3; }
 .feature-copy .button { margin-top: .4rem; }
 .founder-grid { grid-template-columns: .9fr 1.1fr; }
+.founder-profile { display: grid; grid-template-columns: minmax(220px, .75fr) 1.25fr; gap: 3rem; align-items: center; }
+.founder-photo { width: 100%; max-width: 340px; aspect-ratio: 4 / 5; margin-inline: auto; border-radius: .8rem; object-fit: cover; object-position: center 32%; box-shadow: 0 16px 40px rgba(21,50,79,.16); }
+.founder-bio h2 { margin-bottom: 1.1rem; }
+.founder-bio p:last-child { max-width: 650px; color: var(--muted); }
 .section-cta { color: #fff; background: linear-gradient(120deg, #0f304c, #08707a); }
 .cta-inner { text-align: center; }
 .cta-inner h2 { color: #fff; }
@@ -220,7 +224,7 @@ h3 { font-size: 1.3rem; }
   .book-globe { width: 110px; height: 110px; margin-bottom: -14px; border-width: 6px; font-size: 4rem; }
   .book-pages { height: 58px; }
   .section { padding-block: 3.8rem; }
-  .intro-grid, .founder-grid, .content-grid, .feature-grid, .form-layout, .contact-layout { grid-template-columns: 1fr; gap: 1.8rem; }
+  .intro-grid, .founder-grid, .founder-profile, .content-grid, .feature-grid, .form-layout, .contact-layout { grid-template-columns: 1fr; gap: 1.8rem; }
   .program-cards, .involvement-cards { grid-template-columns: 1fr; }
   .program-card, .involve-card { min-height: auto; }
   .program-card .status-label { margin-top: .5rem; }
