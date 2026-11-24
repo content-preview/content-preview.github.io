@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import InquiryForm from '@components/InquiryForm.astro';
+import { SITE } from '@config/site';
+---
+
+<BaseLayout title="Contact | Global Spellbound Initiative">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow eyebrow-gold">Contact</p>
+      <h1>We'd love to hear from you.</h1>
+      <p>Contact GSI about family participation, volunteering, hosting, partnerships or supporting our work.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell contact-layout">
+      <aside class="contact-card">
+        <p class="eyebrow">Reach GSI</p>
+        <h2>Global Spellbound Initiative</h2>
+        <p>Virginia, United States</p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a href="tel:+15713559287">{SITE.phone}</a></p>
+      </aside>
+      <div>
+        <h2>Send us a message</h2>
+        <p class="form-description">Please use this form for general questions. Required fields are marked with an asterisk.</p>
+        <InquiryForm type="contact" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

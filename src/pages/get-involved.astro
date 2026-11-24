@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import InquiryForm from '@components/InquiryForm.astro';
+---
+
+<BaseLayout title="Get Involved | Global Spellbound Initiative">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow eyebrow-gold">Get Involved</p>
+      <h1>Help children read, learn and lead.</h1>
+      <p>
+        Whether you are an educator, volunteer, community leader or business owner, there is a
+        place for you in this mission.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell">
+      <div class="involvement-cards">
+        <article class="involve-card">
+          <span class="eyebrow">For Volunteers &amp; Mentors</span>
+          <h2>Share your skills and encouragement.</h2>
+          <p>Help young people build literacy, confidence and curiosity as opportunities develop.</p>
+          <a class="text-link" href="#volunteer">Volunteer or mentor <span aria-hidden="true">↓</span></a>
+        </article>
+        <article class="involve-card">
+          <span class="eyebrow">For Community Hosts</span>
+          <h2>Make room for learning.</h2>
+          <p>Explore hosting future learning activities through your church, mosque or community organization.</p>
+          <a class="text-link" href="#partner">Explore hosting <span aria-hidden="true">↓</span></a>
+        </article>
+        <article class="involve-card">
+          <span class="eyebrow">For Partners &amp; Sponsors</span>
+          <h2>Collaborate for educational access.</h2>
+          <p>Connect with GSI about learning materials, mentorship, program support or sponsorship.</p>
+          <a class="text-link" href="#partner">Partner with GSI <span aria-hidden="true">↓</span></a>
+        </article>
+        <article class="involve-card">
+          <span class="eyebrow">Support Our Work</span>
+          <h2>Help build opportunities.</h2>
+          <p>We welcome conversations about supporting GSI's educational mission. Online giving is not available at this time.</p>
+          <a class="text-link" href="#partner">Discuss supporting GSI <span aria-hidden="true">↓</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section section-warm" id="volunteer">
+    <div class="shell form-layout">
+      <div class="form-intro">
+        <p class="eyebrow">Volunteer &amp; Mentor</p>
+        <h2>Tell us how you'd like to help.</h2>
+        <p>
+          Share your interests and general availability. An expression of interest does not
+          constitute a volunteer appointment. GSI will provide next steps for suitable roles.
+        </p>
+        <p class="small-note">Please do not send identity documents or background-check information through this form.</p>
+      </div>
+      <InquiryForm type="volunteer" />
+    </div>
+  </section>
+  <section class="section" id="partner">
+    <div class="shell form-layout">
+      <div class="form-intro">
+        <p class="eyebrow">Community Hosts, Partners &amp; Sponsors</p>
+        <h2>Let's explore what's possible.</h2>
+        <p>
+          Tell us about your organization and the kind of collaboration or support you have in
+          mind. We welcome conversations with community groups, institutions and businesses.
+        </p>
+      </div>
+      <InquiryForm type="partner" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,222 @@
+---
+import { SITE } from '@config/site';
+
+type FormType = 'interest' | 'volunteer' | 'partner' | 'contact';
+
+interface Props {
+  type: FormType;
+}
+
+const { type } = Astro.props;
+const formDetails = {
+  interest: {
+    subject: 'Family program interest',
+    submit: 'Join Our Interest List',
+  },
+  volunteer: {
+    subject: 'Volunteer and mentor inquiry',
+    submit: 'Send Volunteer Inquiry',
+  },
+  partner: {
+    subject: 'Partnership and sponsorship inquiry',
+    submit: 'Send Partnership Inquiry',
+  },
+  contact: {
+    subject: 'General contact inquiry',
+    submit: 'Send Message',
+  },
+} satisfies Record<FormType, { subject: string; submit: string }>;
+const details = formDetails[type];
+const id = type;
+---
+
+<form
+  class="inquiry-form"
+  action={`https://formsubmit.co/${SITE.email}`}
+  method="POST"
+  data-interest-form={type === 'interest' ? '' : undefined}
+>
+  <input type="hidden" name="_subject" value={`GSI website: ${details.subject}`} />
+  <input type="hidden" name="_next" value={`${SITE.url}/thank-you/`} />
+  <input type="hidden" name="_template" value="table" />
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honeypot" />
+
+  {type === 'partner' && (
+    <div class="form-field">
+      <label for={`${id}-organization`}>Organization <span aria-hidden="true">*</span></label>
+      <input id={`${id}-organization`} name="organization" autocomplete="organization" required />
+    </div>
+  )}
+
+  <div class="form-field">
+    <label for={`${id}-name`}>Your name <span aria-hidden="true">*</span></label>
+    <input id={`${id}-name`} name="name" autocomplete="name" required />
+  </div>
+  <div class="form-field">
+    <label for={`${id}-email`}>Email address <span aria-hidden="true">*</span></label>
+    <input id={`${id}-email`} name="email" type="email" autocomplete="email" required />
+  </div>
+  <div class="form-field">
+    <label for={`${id}-location`}>City, state and country <span aria-hidden="true">*</span></label>
+    <input
+      id={`${id}-location`}
+      name="location"
+      autocomplete="address-level2"
+      placeholder="For example, Silver Spring, MD, USA"
+      required
+    />
+  </div>
+
+  {type === 'interest' && (
+    <>
+      <fieldset class="form-field form-options">
+        <legend>Which programs interest you? <span aria-hidden="true">*</span></legend>
+        <p class="field-help">Select at least one. This is an expression of interest, not enrollment.</p>
+        {[
+          'Spelling, reading and vocabulary',
+          'Tutoring and mentoring',
+          'Youth leadership',
+          'Educational pathways',
+        ].map((program, index) => (
+          <label class="checkbox-label" for={`${id}-program-${index}`}>
+            <input
+              id={`${id}-program-${index}`}
+              type="checkbox"
+              name="program_interests"
+              value={program}
+              required={index === 0}
+            />
+            {program}
+          </label>
+        ))}
+      </fieldset>
+      <div class="form-field">
+        <label for={`${id}-grade`}>Child's grade band <span class="optional"> (optional; no child's name)</span></label>
+        <select id={`${id}-grade`} name="grade_band">
+          <option value="">Select a grade band</option>
+          <option>Grades 1–4</option>
+          <option>Grades 5–8</option>
+          <option>High school (mentor interest)</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+    </>
+  )}
+
+  {type === 'volunteer' && (
+    <>
+      <div class="form-field">
+        <label for={`${id}-area`}>Area of interest <span aria-hidden="true">*</span></label>
+        <select id={`${id}-area`} name="area_of_interest" required>
+          <option value="">Choose an area</option>
+          <option>Volunteer support</option>
+          <option>Mentoring</option>
+          <option>Tutoring</option>
+          <option>Reading and literacy</option>
+          <option>Youth leadership</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for={`${id}-skills`}>Skills or experience <span class="optional">(optional)</span></label>
+        <textarea id={`${id}-skills`} name="skills" rows="3"></textarea>
+      </div>
+      <div class="form-field">
+        <label for={`${id}-availability`}>General availability <span class="optional">(optional)</span></label>
+        <input id={`${id}-availability`} name="availability" />
+      </div>
+      <div class="form-field">
+        <label for={`${id}-phone`}>Phone <span class="optional">(optional)</span></label>
+        <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" />
+      </div>
+    </>
+  )}
+
+  {type === 'partner' && (
+    <>
+      <div class="form-field">
+        <label for={`${id}-inquiry-type`}>Inquiry type <span aria-hidden="true">*</span></label>
+        <select id={`${id}-inquiry-type`} name="inquiry_type" required>
+          <option value="">Choose an inquiry type</option>
+          <option>Community host</option>
+          <option>Educational partnership</option>
+          <option>Sponsorship</option>
+          <option>Program support</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for={`${id}-website`}>Organization website <span class="optional">(optional)</span></label>
+        <input id={`${id}-website`} name="website" type="url" autocomplete="url" />
+      </div>
+      <div class="form-field">
+        <label for={`${id}-phone`}>Phone <span class="optional">(optional)</span></label>
+        <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" />
+      </div>
+    </>
+  )}
+
+  {type === 'contact' && (
+    <div class="form-field">
+      <label for={`${id}-subject`}>How can we help? <span aria-hidden="true">*</span></label>
+      <select id={`${id}-subject`} name="subject_category" required>
+        <option value="">Choose a topic</option>
+        <option>Family participation</option>
+        <option>Volunteering</option>
+        <option>Community hosting</option>
+        <option>Partnership or sponsorship</option>
+        <option>Other</option>
+      </select>
+    </div>
+  )}
+
+  <div class="form-field">
+    <label for={`${id}-message`}>
+      {type === 'interest' ? 'Anything else you would like us to know?' : 'Message'}
+      {type === 'interest' ? <span class="optional"> (optional)</span> : <span aria-hidden="true">*</span>}
+    </label>
+    <textarea
+      id={`${id}-message`}
+      name="message"
+      rows="4"
+      required={type !== 'interest'}
+      placeholder={type === 'interest' ? "Please do not include a child's name or sensitive information." : undefined}
+    ></textarea>
+  </div>
+
+  {type === 'partner' && (
+    <div class="form-field">
+      <label for={`${id}-support`}>How might your organization support or host activities? <span class="optional">(optional)</span></label>
+      <textarea id={`${id}-support`} name="proposed_support" rows="3"></textarea>
+    </div>
+  )}
+
+  {type === 'interest' && (
+    <div class="form-field">
+      <label for={`${id}-phone`}>Phone <span class="optional">(optional)</span></label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" />
+    </div>
+  )}
+
+  <p class="form-privacy">
+    Please submit adult contact information only. Do not include children's names or sensitive information.
+    See our <a href="/privacy/">Privacy Notice</a>.
+  </p>
+  <button class="button" type="submit">{details.submit}</button>
+</form>
+
+{type === 'interest' && (
+  <script>
+    document.querySelectorAll<HTMLFormElement>('[data-interest-form]').forEach((form) => {
+      const choices = Array.from(
+        form.querySelectorAll<HTMLInputElement>('input[name="program_interests"]'),
+      );
+      const updateRequiredChoice = () => {
+        if (choices[0]) {
+          choices[0].required = !choices.some((choice) => choice.checked);
+        }
+      };
+      choices.forEach((choice) => choice.addEventListener('change', updateRequiredChoice));
+    });
+  </script>
+)}

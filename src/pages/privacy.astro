@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE } from '@config/site';
+---
+
+<BaseLayout title="Privacy Notice | Global Spellbound Initiative">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow eyebrow-gold">Privacy</p>
+      <h1>Privacy Notice</h1>
+      <p>How GSI handles information submitted through this website.</p>
+    </div>
+  </section>
+  <section class="section">
+    <article class="shell policy-copy">
+      <p>
+        Global Spellbound Initiative (GSI) uses information submitted through its inquiry forms to
+        understand and respond to family, volunteer, community host, partnership, sponsorship and
+        general inquiries.
+      </p>
+      <h2>Information submitted</h2>
+      <p>
+        Forms request adult contact details and information relevant to an inquiry. Some forms may
+        ask for a city and state, program interests or organization details. Do not submit a child's
+        name, date of birth, school details, address, photos, documents or other sensitive
+        information.
+      </p>
+      <h2>Form delivery</h2>
+      <p>
+        Forms are delivered using FormSubmit, a third-party form delivery service, to
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. The service processes submitted data to
+        deliver the message and may apply spam protection. Do not use the forms if you do not wish
+        to submit information through this service.
+      </p>
+      <h2>Access and requests</h2>
+      <p>
+        GSI uses submitted information to respond to the inquiry and manage related follow-up. To
+        request access to, correction of or deletion of information you submitted, contact
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+      </p>
+      <h2>Questions</h2>
+      <p>
+        For privacy questions, contact GSI at <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or
+        <a href="tel:+15713559287">{SITE.phone}</a>.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

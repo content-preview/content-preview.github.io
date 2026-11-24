@@ -1,0 +1,39 @@
+---
+import { NAVIGATION } from '@config/site';
+
+interface Props {
+  currentPathname: string;
+}
+
+const { currentPathname } = Astro.props;
+const isActive = (href: string) =>
+  href === '/' ? currentPathname === '/' : currentPathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label="Global Spellbound Initiative home">
+      <img src="/logo.jpeg" alt="" width="58" height="58" />
+      <span>Global Spellbound <small>Initiative</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {NAVIGATION.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.name}
+        </a>
+      ))}
+    </nav>
+    <a class="button button-small header-cta" href="/programs/#interest">Join Our Interest List</a>
+    <details class="mobile-nav">
+      <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Mobile navigation">
+        {NAVIGATION.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.name}
+          </a>
+        ))}
+        <a class="button" href="/programs/#interest">Join Our Interest List</a>
+      </nav>
+    </details>
+  </div>
+</header>

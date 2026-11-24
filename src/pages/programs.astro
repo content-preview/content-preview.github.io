@@ -1,0 +1,89 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import InquiryForm from '@components/InquiryForm.astro';
+---
+
+<BaseLayout title="Programs | Global Spellbound Initiative">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow eyebrow-gold">Programs</p>
+      <h1>Learning, confidence and opportunity for young people.</h1>
+      <p>Our first programs are being developed with families and communities across the DMV.</p>
+      <span class="status-banner">Coming Soon to the DMV</span>
+    </div>
+  </section>
+  <section class="section section-warm">
+    <div class="shell">
+      <div class="coming-soon-copy">
+        <p class="eyebrow">Washington, DC · Maryland · Virginia</p>
+        <h2>Coming Soon to the DMV</h2>
+        <p class="lead">
+          Global Spellbound Initiative is preparing to launch educational programs for children and
+          families in Washington, DC, Maryland and Virginia. Planned activities include spelling,
+          reading, vocabulary development, tutoring, mentoring and youth leadership. Program dates,
+          locations and participation details will be announced as they become available.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">In Development</p>
+        <h2>Programs we're building together.</h2>
+      </div>
+      <div class="program-cards">
+        <article class="program-card">
+          <span class="status-label">In development</span>
+          <h3>Ethiopian American Spelling Bee</h3>
+          <p>
+            A proposed community-based spelling and literacy initiative combining spelling,
+            vocabulary, reading and speaking activities for families in the DMV.
+          </p>
+          <a class="text-link" href="#interest">Join the interest list <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="program-card">
+          <span class="status-label">Planned</span>
+          <h3>Tutoring, Mentoring &amp; Family Learning</h3>
+          <p>
+            GSI plans to develop learning support and mentoring opportunities alongside family
+            learning activities.
+          </p>
+        </article>
+        <article class="program-card">
+          <span class="status-label">Planned</span>
+          <h3>Reading, Language &amp; Youth Leadership</h3>
+          <p>
+            Future reading clubs, vocabulary activities, book discussions and public speaking rooted
+            in community participation.
+          </p>
+        </article>
+        <article class="program-card">
+          <span class="status-label">Planned</span>
+          <h3>Educational Pathways</h3>
+          <p>
+            Information, mentorship and collaboration to help families explore learning
+            opportunities.
+          </p>
+        </article>
+      </div>
+      <p class="disclaimer">
+        Program availability, dates, locations, eligibility and participation details will be
+        shared when confirmed. An interest form does not reserve a place or complete enrollment.
+      </p>
+    </div>
+  </section>
+  <section class="section section-warm" id="interest">
+    <div class="shell form-layout">
+      <div class="form-intro">
+        <p class="eyebrow">For Parents &amp; Families</p>
+        <h2>Join Our Interest List</h2>
+        <p>
+          Tell us what you'd like to hear about. We'll share program details when they're confirmed.
+          This is an expression of interest, not formal enrollment.
+        </p>
+      </div>
+      <InquiryForm type="interest" />
+    </div>
+  </section>
+</BaseLayout>
