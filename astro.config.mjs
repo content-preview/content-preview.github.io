@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://globalspellboundinitiative.org',
+  site: 'https://content-preview.github.io',
   trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
